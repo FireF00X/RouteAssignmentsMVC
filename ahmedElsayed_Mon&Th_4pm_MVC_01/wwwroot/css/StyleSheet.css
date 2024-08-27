@@ -1,0 +1,9 @@
+﻿#main-div {
+    min-height: calc(100vh - 112px);
+}
+
+a:hover {
+    background-color: #00000012;
+    border-radius: 8px;
+    font-weight:500;
+}

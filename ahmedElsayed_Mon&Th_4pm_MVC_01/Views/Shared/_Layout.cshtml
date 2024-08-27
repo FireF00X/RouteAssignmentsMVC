@@ -1,0 +1,53 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    string currentAction = ViewContext.RouteData.Values["action"]?.ToString();
+    string currentController = ViewContext.RouteData.Values["controller"]?.ToString();
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/StyleSheet.css" rel="stylesheet" />
+    <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Navbar</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav links-container">
+                        <li class="nav-item">
+                            <a class="nav-link @(currentAction == "Index" && currentController == "Home" ? "active" : "")" href="/Home/Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(currentAction == "AboutUs" && currentController == "Home" ? "active" : "")" href="/Home/AboutUs">AboutUs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(currentAction == "ContactUs" && currentController == "Home" ? "active" : "")" href="/Home/ContactUs">ContactUs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(currentAction == "Private" && currentController == "Home" ? "active" : "")" href="/Home/Private">Private</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div id="main-div" class="d-flex justify-content-center  align-items-center">
+        @RenderBody()
+    </div>
+    <footer class="fixed-bottom bg-secondary-subtle p-3 text-center">
+        CopyWrite &copy; <span class="fw-bold">AboElsayed</span> @DateTime.Now.Year
+    </footer>
+</body>
+</html>
